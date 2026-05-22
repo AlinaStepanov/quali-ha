@@ -40,6 +40,7 @@ This is where I connected GitHub, installed the agent, and created the blueprint
 Then I installed the agent into my cluster.
 
 After installation, I verified that the agent was running and connected in the Quali UI.
+![Quali Agent Connected](screenshots/agent-connection.png)
 
 ### 7. I created the Terraform code
 
@@ -68,6 +69,7 @@ After the Terraform code was ready, I pushed the project to GitHub.
 ### 10. I connected GitHub to Quali 
 
 Then I connected my GitHub repository to Quali ( personal access tokens was required)
+![GitHub Connected](screenshots/gh-connection.png)
 
 ### 11. I created the Blueprint
 
@@ -78,20 +80,26 @@ The blueprint defined the Terraform grain, the source repository, the agent, AWS
 > [ISSUES]
 
 >The first issue I had was with the Terraform grain and the connection to the agent. I needed to make sure the grain was using the correct agent name and that the agent was connected properly in Quali. I tried to configure everything through the UI, but it did not work. After I understood that I could work with the blueprint YAML directly, it resolve the issue and became easier to control the configuration.
+![Agent-issue](screenshots/agent-issue.png)
 
 >The second issue was that I don't have permittion to access the credentials throught the i/o. Fixed by adding `authentication` in YAML code.
 
+![Access-issue](screenshots/issue.png)
+
 Using the blueprint file, I was able to connect additional inputs, such as the AWS credentials and the agent. I also configured the Terraform grain to use dev.tfvars instead of the default terraform.tfvars file.
 
-This helped me make the blueprint more predictable and easier to troubleshoot.
+This helped me make the blueprint more predictable and easier to troubleshoot.   [View example of YAML file](example.yaml)
 
 ### 12. I verified the result
 
 After the environment was launched, I verified the result in AWS and in the Quali environment details.
 
 I checked that the AWS resource was created successfully.
+![Launch-success](screenshots/launch-success.png)
 
 I also checked the outputs section in Quali to confirm that Terraform outputs were visible.
+
+![Outputs](screenshots/outputs.png)
 
 ### 13. I cleaned up the environment
 

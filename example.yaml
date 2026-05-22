@@ -1,0 +1,27 @@
+spec_version: 2
+outputs:
+  bucket_name:
+    value: '{{ .grains.roots.outputs.bucket_name }}'
+    kind: regular
+  bucket_arn:
+    value: '{{ .grains.roots.outputs.bucket_arn }}'
+    kind: regular
+grains:
+  roots:
+    kind: terraform
+    spec:
+      source:
+        store: quali-ha
+        path: roots
+      agent:
+        name: dd-agent
+      tfvars-files:
+        - source:
+            store: quali-ha
+            path: roots/dev.tfvars
+      authentication:
+        - quali-aws
+      inputs: []
+      outputs:
+        - bucket_name
+        - bucket_arn
